@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/startproject?characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+    username: root
+    password: root
+
+#配置MyBatis的Mapper.xml的路径:
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+    #Mybatis打印sql,控制台打印
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:mappers/*.xml
