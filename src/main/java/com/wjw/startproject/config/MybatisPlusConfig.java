@@ -1,6 +1,8 @@
 package com.wjw.startproject.config;
 
+import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.extension.plugins.OptimisticLockerInterceptor;
+import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -13,10 +15,24 @@ import org.springframework.context.annotation.Configuration;
 public class MybatisPlusConfig {
     /**
      * 开启mybatis plus的乐观锁配置
+     *
      * @return
      */
     @Bean
-    public OptimisticLockerInterceptor optimisticLockerInterceptor(){
+    public OptimisticLockerInterceptor optimisticLockerInterceptor() {
         return new OptimisticLockerInterceptor();
+    }
+
+    /**
+     * 配置自动每次查询的总条数:total
+     * @return
+     */
+    @Bean
+    public PaginationInterceptor paginationInterceptor() {
+        PaginationInterceptor paginationInterceptor = new PaginationInterceptor();
+
+        //数据库类型配置
+        paginationInterceptor.setDbType(DbType.MYSQL);
+        return paginationInterceptor;
     }
 }
